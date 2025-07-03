@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/DominioCentroComputo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DominioCentroComputo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DominioLabComputo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DominioLabComputo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/NegocioCentroComputo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/NegocioCentroComputo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/NegocioLabComputo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/NegocioLabComputo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PersistenciaCentroComputo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PersistenciaCentroComputo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PersistenciaLabComputo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PersistenciaLabComputo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PresentacionCentroComputo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PresentacionCentroComputo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PresentacionLabComputo/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PresentacionLabComputo/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shared/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shared/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

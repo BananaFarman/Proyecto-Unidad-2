@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="PresentacionCentroComputo" />
+        <module name="shared" />
+        <module name="DominioCentroComputo" />
+        <module name="NegocioCentroComputo" />
+        <module name="PersistenciaCentroComputo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="DominioLabComputo" target="22" />
+      <module name="NegocioLabComputo" target="22" />
+      <module name="PersistenciaLabComputo" target="22" />
+      <module name="PresentacionLabComputo" target="22" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
