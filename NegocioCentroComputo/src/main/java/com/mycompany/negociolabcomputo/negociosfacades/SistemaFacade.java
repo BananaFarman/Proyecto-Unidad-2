@@ -26,6 +26,12 @@ public class SistemaFacade implements ISistemaFacade {
                          IBloqueoFacade bloqueoFacade) {
         this.unidadAcademicaFacade = unidadAcademicaFacade;
         this.centroComputoFacade = centroComputoFacade;
+        this.computadoraFacade = computadoraFacade;
+        this.carreraFacade = carreraFacade;
+        this.estudianteFacade = estudianteFacade;
+        this.apartadoFacade = apartadoFacade;
+        this.bloqueoFacade = bloqueoFacade;
+
     }
 
     public IUnidadAcademicaFacade getUnidadAcademicaFacade() {
@@ -38,6 +44,10 @@ public class SistemaFacade implements ISistemaFacade {
 
     public ICentroComputoFacade getCentroComputoFacade() {
         return centroComputoFacade;
+    }
+
+    public IComputadoraFacade getComputadoraFacade() {
+        return computadoraFacade;
     }
 
     public IEstudianteFacade getEstudianteFacade() {

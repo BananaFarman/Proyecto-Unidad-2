@@ -1,6 +1,8 @@
 package entidades;
 
 import enums.EstatusApartado;
+import enums.FuncionEquipo;
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
@@ -29,6 +31,10 @@ public class ComputadoraDominio implements Serializable {
     @Column(nullable = false)
     private EstatusApartado estatusApartado;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private FuncionEquipo funcion;
+
     @ManyToOne
     @JoinColumn(name = "id_laboratorio", nullable = false)
     private CentroComputoDominio centroComputo;
@@ -37,20 +43,22 @@ public class ComputadoraDominio implements Serializable {
 
     }
 
-    public ComputadoraDominio(Integer numeroMaquina, String direccionIp, List<String> softwareInstalado, EstatusApartado estatusApartado, CentroComputoDominio centroComputo) {
+    public ComputadoraDominio(Integer numeroMaquina, String direccionIp, List<String> softwareInstalado, EstatusApartado estatusApartado, FuncionEquipo funcion, CentroComputoDominio centroComputo) {
         this.numeroMaquina = numeroMaquina;
         this.direccionIp = direccionIp;
         this.softwareInstalado = softwareInstalado;
         this.estatusApartado = estatusApartado;
+        this.funcion = funcion;
         this.centroComputo = centroComputo;
     }
 
-    public ComputadoraDominio(Long id, Integer numeroMaquina, String direccionIp, List<String> softwareInstalado, EstatusApartado estatusApartado, CentroComputoDominio centroComputo) {
+    public ComputadoraDominio(Long id, Integer numeroMaquina, String direccionIp, EstatusApartado estatusApartado, FuncionEquipo funcion, List<String> softwareInstalado, CentroComputoDominio centroComputo) {
         this.id = id;
         this.numeroMaquina = numeroMaquina;
         this.direccionIp = direccionIp;
-        this.softwareInstalado = softwareInstalado;
         this.estatusApartado = estatusApartado;
+        this.funcion = funcion;
+        this.softwareInstalado = softwareInstalado;
         this.centroComputo = centroComputo;
     }
 
@@ -92,6 +100,10 @@ public class ComputadoraDominio implements Serializable {
 
     public void setEstatusApartado(EstatusApartado estatusApartado) {
         this.estatusApartado = estatusApartado;
+    }
+
+    public FuncionEquipo getFuncion() {
+        return funcion;
     }
 
     public CentroComputoDominio getCentroComputo() {

@@ -78,7 +78,7 @@ public class MainFramePanel extends JPanel {
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setColor(Color.white);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setStroke(new BasicStroke(.5f));
+        g2d.setStroke(new BasicStroke(.2f));
         g2d.drawLine(368, 40, 368, 720);
         g2d.dispose();
 

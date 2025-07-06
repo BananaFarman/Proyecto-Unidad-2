@@ -3,7 +3,9 @@ package com.mycompany.negociolabcomputo.negociosfacades.centrocomputo;
 import com.mycompany.persistencialabcomputo.daos.centrocomputo.ICentroComputoDAO;
 import dtos.centrocomputo.CentroComputoAgregarDTO;
 import dtos.centrocomputo.CentroComputoTablaDTO;
+import dtos.computadora.ComputadoraTablaDTO;
 import entidades.CentroComputoDominio;
+import entidades.ComputadoraDominio;
 import entidades.UnidadDominio;
 
 import java.sql.Time;
@@ -19,7 +21,6 @@ public class CentroComputoNegocio implements ICentroComputoNeogcio {
 
     public List<CentroComputoTablaDTO> consultarCentros() {
         List<CentroComputoDominio> centros = centroComputoDAO.obtenerTodos();
-
         return centros.stream()
                 .map(centro -> new CentroComputoTablaDTO(
                         centro.getId(),
@@ -64,7 +65,25 @@ public class CentroComputoNegocio implements ICentroComputoNeogcio {
     }
 
     @Override
+    public List<ComputadoraTablaDTO> consultarComputadorasCentro(CentroComputoDominio centro) {
+        List<ComputadoraDominio> computadoras = centroComputoDAO.obtenerComputadoras(centro);
+        return computadoras.stream()
+                .map(computadora -> new ComputadoraTablaDTO(
+                        computadora.getId(),
+                        computadora.getDireccionIp(),
+                        computadora.getNumeroMaquina(),
+                        computadora.getEstatusApartado().name(),
+                        computadora.getFuncion().name()
+                )).collect(Collectors.toList());
+    }
+
+    @Override
     public void validarHorarios(CentroComputoAgregarDTO centroComputoAgregarDTO) {
         //validar los horarios que no sean incongruentes
+    }
+
+    @Override
+    public CentroComputoDominio buscarPorId(Long id) {
+        return centroComputoDAO.buscarPorId(id);
     }
 }

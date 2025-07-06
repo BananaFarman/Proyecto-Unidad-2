@@ -3,6 +3,7 @@ package com.mycompany.presentacionlabcomputo.styles;
 import com.mycompany.negociolabcomputo.negociosfacades.ISistemaFacade;
 import com.mycompany.negociolabcomputo.negociosfacades.SistemaFacade;
 import entidades.UnidadDominio;
+import enums.FuncionEquipo;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicComboBoxUI;
@@ -66,6 +67,10 @@ public class CustomComboBox<T> extends JComboBox<T> {
                 for (UnidadDominio unidad : unidades) {
                     this.addItem((T)unidad);
                 }
+                break;
+            case "funcionalidades":
+                this.addItem((T)"De reservas");
+                this.addItem((T)"Para reservar");
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + tipo);

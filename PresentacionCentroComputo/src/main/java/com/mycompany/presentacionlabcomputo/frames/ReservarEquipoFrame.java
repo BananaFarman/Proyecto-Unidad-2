@@ -16,7 +16,7 @@ public class ReservarEquipoFrame extends JFrame{
 
 
     public ReservarEquipoFrame() {
-        setSize(1360, 800);
+        setSize(1440, 800);
         getContentPane().setBackground(Style.COLOR);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setBackground(Style.COLOR);

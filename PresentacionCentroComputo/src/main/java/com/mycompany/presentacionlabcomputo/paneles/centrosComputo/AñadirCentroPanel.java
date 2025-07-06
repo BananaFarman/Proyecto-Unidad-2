@@ -26,8 +26,8 @@ public class AñadirCentroPanel extends JPanel {
     public AñadirCentroPanel(CentrosComputoPanel panelOwner, ISistemaFacade sistemaFacade) {
         setLayout(new BorderLayout());
         setOpaque(false);
-        panelCentro = new JPanel();
 
+        panelCentro = new JPanel();
         panelCentro.setOpaque(false);
         panelSur = new JPanel();
         panelSur.setPreferredSize(new Dimension(400, 100));
@@ -111,7 +111,7 @@ public class AñadirCentroPanel extends JPanel {
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setColor(Color.white);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setStroke(new BasicStroke(.5f));
+        g2d.setStroke(new BasicStroke(.2f));
         g2d.setFont(FuenteUtil.cargarFuenteInter(26, "Inter_SemiBold"));
         g2d.drawString("Nuevo Centro", 140, 45);
         g2d.setFont(FuenteUtil.cargarFuenteInter(15, "Inter_Light"));

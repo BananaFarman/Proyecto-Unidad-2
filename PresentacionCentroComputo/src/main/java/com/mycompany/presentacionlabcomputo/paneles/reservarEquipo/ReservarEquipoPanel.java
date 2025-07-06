@@ -28,6 +28,21 @@ public class ReservarEquipoPanel extends JPanel {
         //Todas las lineas del panel para los "escritorios"
         List<LineaAngular> lineas = List.of(
                 // Primer Escritorio
+                new LineaAngular(24, 396, 30, 640),
+                new LineaAngular(103, 441, 30, 640),
+                new LineaAngular(103, 447, 30, 640),
+                new LineaAngular(103, 441, 150, 90),
+                new LineaAngular(103, 447, 150, 90),
+                new LineaAngular(655, 121, 150, 90),
+                new LineaAngular(657, 202, 90, 80),
+                new LineaAngular(103, 521, 90, 80),
+                new LineaAngular(24, 476, 90, 80),
+                // Segundo Escritorio
+                new LineaAngular(214, 506, 30, 640),
+                new LineaAngular(292, 551, 30, 640),
+                // Tercer Escritorio
+                new LineaAngular(417, 622, 30, 640),
+                new LineaAngular(495, 667, 30, 640)
 
                 );
 

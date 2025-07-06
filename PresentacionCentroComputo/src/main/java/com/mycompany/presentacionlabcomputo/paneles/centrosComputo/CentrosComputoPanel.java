@@ -40,7 +40,7 @@ public class CentrosComputoPanel extends JPanel {
         //Componentes
         modelo = new DefaultTableModel(new Object[]{"ID", "Hora Apertura", "Hora Cierre", "Unidad Academica", "Computadoras", " "}, 0);
         this.tablaCentros = new CustomTable(modelo);
-        tablaCentros.agregarColumnaBotonAccion();
+        tablaCentros.agregarColumnaBotonAccion(owner, this);
         lblTitulo = new JLabel("Centro de Computos");
         lblTitulo.setFont(FuenteUtil.cargarFuenteInter(26, "Inter_Bold"));
         lblTitulo.setForeground(Color.white);
@@ -133,13 +133,21 @@ public class CentrosComputoPanel extends JPanel {
         }
     }
 
+    public ISistemaFacade getSistemaFacade() {
+        return sistemaFacade;
+    }
+
+    public CustomTable getTablaCentros() {
+        return tablaCentros;
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setColor(Color.white);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setStroke(new BasicStroke(.5f));
+        g2d.setStroke(new BasicStroke(.2f));
         g2d.drawLine(368, 40, 368, 720);
         g2d.drawRoundRect(52, 100, 260, 130, 25, 25);
         g2d.dispose();

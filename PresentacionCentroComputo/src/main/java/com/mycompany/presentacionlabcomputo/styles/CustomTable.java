@@ -1,5 +1,8 @@
 package com.mycompany.presentacionlabcomputo.styles;
 
+import com.mycompany.presentacionlabcomputo.frames.MainFrameBase;
+import com.mycompany.presentacionlabcomputo.paneles.centrosComputo.CentrosComputoPanel;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
@@ -67,9 +70,9 @@ public class CustomTable extends JTable {
         }
     }
 
-    public void agregarColumnaBotonAccion() {
+    public void agregarColumnaBotonAccion(MainFrameBase owner, CentrosComputoPanel centrosComputoPanel) {
         this.getColumnModel().getColumn(5).setCellRenderer(new BotonRenderer());
-        this.getColumnModel().getColumn(5).setCellEditor(new BotonEditor(new JCheckBox()));
+        this.getColumnModel().getColumn(5).setCellEditor(new BotonEditor(new JCheckBox(), owner, centrosComputoPanel));
     }
 
 }

@@ -19,7 +19,7 @@ public class MainFrameBase extends JFrame {
     private Button btnReportes;
 
     public MainFrameBase(ISistemaFacade sistemaFacade) {
-        setSize(1440, 800);
+        setSize(1470, 800);
         getContentPane().setBackground(Style.COLOR);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -42,5 +42,9 @@ public class MainFrameBase extends JFrame {
 
     public void volverInicio() {
         showPanelContenedorNuevo(mainFramePanel);
+    }
+
+    public void volerAtras(JPanel nuevoPanel){
+        showPanelContenedorNuevo(nuevoPanel);
     }
 }

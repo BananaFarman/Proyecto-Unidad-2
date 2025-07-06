@@ -1,6 +1,6 @@
 package enums;
 
 public enum FuncionEquipo {
-    DE_RESERVA,
-    DE_USO
+    Para_Reservas,
+    De_Reserva
 }

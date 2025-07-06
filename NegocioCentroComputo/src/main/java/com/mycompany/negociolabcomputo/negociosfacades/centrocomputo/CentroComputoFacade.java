@@ -3,6 +3,7 @@ package com.mycompany.negociolabcomputo.negociosfacades.centrocomputo;
 import com.mycompany.persistencialabcomputo.daos.centrocomputo.ICentroComputoDAO;
 import dtos.centrocomputo.CentroComputoAgregarDTO;
 import dtos.centrocomputo.CentroComputoTablaDTO;
+import dtos.computadora.ComputadoraTablaDTO;
 import entidades.CentroComputoDominio;
 import entidades.UnidadDominio;
 
@@ -28,8 +29,18 @@ public class CentroComputoFacade implements ICentroComputoFacade {
     }
 
     @Override
+    public List<ComputadoraTablaDTO> consultarComputadorasCentro(CentroComputoDominio centro) {
+        return ICentroComputoNegocio.consultarComputadorasCentro(centro);
+    }
+
+    @Override
     public void guardarCentro(CentroComputoAgregarDTO centroComputoAgregarDTO) {
         ICentroComputoNegocio.guardarCentro(centroComputoAgregarDTO);
+    }
+
+    @Override
+    public CentroComputoDominio obtenerCentroPorId(Long id) {
+        return ICentroComputoNegocio.buscarPorId(id);
     }
 
 }
