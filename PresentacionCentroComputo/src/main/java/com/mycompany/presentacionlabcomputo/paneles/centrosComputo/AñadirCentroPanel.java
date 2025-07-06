@@ -86,7 +86,7 @@ public class AñadirCentroPanel extends JPanel {
             JOptionPane.showMessageDialog(null, "Centro de cómputo agregado correctamente.", "Centro Agregado", JOptionPane.INFORMATION_MESSAGE);
             if (unidadSeleccionada != null && unidadSeleccionada.getId() == 0L) {
                 panelOwner.crearTablaCentros();
-            }else if(unidadSeleccionada != null){
+            } else if (unidadSeleccionada != null) {
                 panelOwner.crearTablaPorUnidad(unidadSeleccionada);
             }
 
@@ -116,7 +116,7 @@ public class AñadirCentroPanel extends JPanel {
         g2d.drawString("Nuevo Centro", 140, 45);
         g2d.setFont(FuenteUtil.cargarFuenteInter(15, "Inter_Light"));
         g2d.drawString("Horario de funcionamiento", 150, 275);
-        g2d.drawRoundRect((getWidth()/2)-155, 70, 310, 290, 25, 25);
+        g2d.drawRoundRect((getWidth() / 2) - 155, 70, 310, 290, 25, 25);
         g2d.dispose();
 
     }

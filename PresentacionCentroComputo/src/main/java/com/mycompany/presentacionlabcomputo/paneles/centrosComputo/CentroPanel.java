@@ -48,7 +48,7 @@ public class CentroPanel extends JPanel {
         btnVolver = new Button("Volver", 162, 45, 20, 50);
 
         btnAñadirComputadora.addActionListener(e -> {
-            añadirEquipoDialog = new AñadirEquipoDialog(owner, this, sistemaFacade);
+            añadirEquipoDialog = new AñadirEquipoDialog(owner, this, centroComputo, sistemaFacade);
         });
 
         btnVolver.addActionListener(e -> {

@@ -1,19 +1,34 @@
 package dtos.computadora;
 
+import entidades.CentroComputoDominio;
+import enums.FuncionEquipo;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author brand
  */
 public class ComputadoraAgregarDTO {
-
+    private String sistemaOperativo;
+    private FuncionEquipo funcion;
     private Integer numeroMaquina;
     private String direccionIp;
-    private Long idLaboratorio;
+    private List<String> softwareInstalado;
+    private CentroComputoDominio centroComputo;
 
-    public ComputadoraAgregarDTO(Integer numeroMaquina, String direccionIp, Long idLaboratorio) {
+    public ComputadoraAgregarDTO(String sistemaOperativo, FuncionEquipo funcion, Integer numeroMaquina, String ip, List<String> softwareInstalado, CentroComputoDominio centroComputo) {
+        this.sistemaOperativo = sistemaOperativo;
+        this.funcion = funcion;
         this.numeroMaquina = numeroMaquina;
-        this.direccionIp = direccionIp;
-        this.idLaboratorio = idLaboratorio;
+        this.direccionIp = ip;
+        if (softwareInstalado == null) {
+            this.softwareInstalado = new ArrayList<>();
+        } else {
+            this.softwareInstalado = softwareInstalado;
+        }
+        this.centroComputo = centroComputo;
     }
 
     public Integer getNumeroMaquina() {
@@ -32,17 +47,29 @@ public class ComputadoraAgregarDTO {
         this.direccionIp = direccionIp;
     }
 
-    public Long getIdLaboratorio() {
-        return idLaboratorio;
+    public CentroComputoDominio getCentroComputo() {
+        return centroComputo;
     }
 
-    public void setIdLaboratorio(Long idLaboratorio) {
-        this.idLaboratorio = idLaboratorio;
+    public void setCentroComputo(CentroComputoDominio centroComputo) {
+        this.centroComputo = centroComputo;
+    }
+
+    public String getSistemaOperativo() {
+        return sistemaOperativo;
+    }
+
+    public FuncionEquipo getFuncion() {
+        return funcion;
+    }
+
+    public List<String> getSoftwareInstalado() {
+        return softwareInstalado;
     }
 
     @Override
     public String toString() {
-        return "ComputadoraAgregarDTO{" + "numeroMaquina=" + numeroMaquina + ", direccionIp=" + direccionIp + ", idLaboratorio=" + idLaboratorio + '}';
+        return "ComputadoraAgregarDTO{" + "numeroMaquina=" + numeroMaquina + ", direccionIp=" + direccionIp + ", idLaboratorio=" + centroComputo + '}';
     }
 
 }

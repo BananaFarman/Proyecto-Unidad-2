@@ -53,6 +53,7 @@ public class CentroComputoNegocio implements ICentroComputoNeogcio {
 
         Time horaInicio = Time.valueOf(centroComputoAgregarDTO.getHoraInicio());
         Time horaFIn =  Time.valueOf(centroComputoAgregarDTO.getHoraFin());
+
         CentroComputoDominio centroComputoDominio = new  CentroComputoDominio();
         centroComputoDominio.setHoraInicio(horaInicio);
         centroComputoDominio.setHoraFin(horaFIn);

@@ -140,7 +140,15 @@ public class CentroComputoDominio implements Serializable {
 
     @Override
     public String toString() {
-        return "CentroComputoDominio{" + "id=" + id + ", horaInicio=" + horaInicio + ", horaFin=" + horaFin + ", usuarioAdmin=" + usuarioAdmin + ", contrasenaAdmin=" + contrasenaAdmin + ", unidad=" + unidad + ", computadoras=" + computadoras + '}';
+        return "CentroComputoDominio{" +
+                "id=" + id +
+                ", horaInicio=" + horaInicio +
+                ", horaFin=" + horaFin +
+                ", usuarioAdmin=" + usuarioAdmin +
+                ", contrasenaAdmin=" + contrasenaAdmin +
+                ", unidad=" + unidad +
+                ", numeroComputadoras=" + getNumeroComputadoras() +
+                '}';
     }
 
 }

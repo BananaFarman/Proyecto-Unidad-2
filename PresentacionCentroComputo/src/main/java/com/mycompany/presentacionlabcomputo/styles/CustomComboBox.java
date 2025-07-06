@@ -69,8 +69,8 @@ public class CustomComboBox<T> extends JComboBox<T> {
                 }
                 break;
             case "funcionalidades":
-                this.addItem((T)"De reservas");
-                this.addItem((T)"Para reservar");
+                this.addItem((T)FuncionEquipo.De_Reserva);
+                this.addItem((T)FuncionEquipo.Para_Reservas);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + tipo);

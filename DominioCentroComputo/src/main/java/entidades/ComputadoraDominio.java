@@ -21,7 +21,7 @@ public class ComputadoraDominio implements Serializable {
     @Column(nullable = false)
     private Integer numeroMaquina;
 
-    @Column(nullable = false, length = 15, unique = true)
+    @Column(nullable = false, length = 15)//, unique = true
     private String direccionIp;
 
     @Column(length = 500)
@@ -104,6 +104,10 @@ public class ComputadoraDominio implements Serializable {
 
     public FuncionEquipo getFuncion() {
         return funcion;
+    }
+
+    public void setFuncion(FuncionEquipo funcion) {
+        this.funcion = funcion;
     }
 
     public CentroComputoDominio getCentroComputo() {
