@@ -25,7 +25,6 @@ public class BotonEditor extends DefaultCellEditor {
         this.centrosComputoPanel = centrosComputoPanel;
         this.table = centrosComputoPanel.getTablaCentros();
 
-
         button = new JButton("≡");
         button.setFont(new Font("SansSerif", Font.PLAIN, 24));
         button.setBackground(new Color(60, 63, 83));

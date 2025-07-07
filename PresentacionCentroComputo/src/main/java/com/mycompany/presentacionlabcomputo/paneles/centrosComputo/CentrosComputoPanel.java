@@ -28,6 +28,10 @@ public class CentrosComputoPanel extends JPanel {
     private Button btnVolver;
     private CustomTable tablaCentros;
     private DefaultTableModel modelo;
+    private TablaPaginada<CentroComputoTablaDTO> paginador;
+    private final JLabel lblPagina;
+    private final Button btnAnterior;
+    private final Button btnSiguiente;
 
     public CentrosComputoPanel(MainFrameBase owner, ISistemaFacade sistemaFacade) {
         setOpaque(false);
@@ -38,7 +42,7 @@ public class CentrosComputoPanel extends JPanel {
         menuLateralPanel = new MenuLateralPanel();
 
         //Componentes
-        modelo = new DefaultTableModel(new Object[]{"ID", "Hora Apertura", "Hora Cierre", "Unidad Academica", "Computadoras", " "}, 0);
+        modelo = new DefaultTableModel(new Object[]{"ID", "Hora Apertura", "Hora Cierre", "Unidad Academica", "Computadoras", "Detalles"}, 0);
         this.tablaCentros = new CustomTable(modelo);
         tablaCentros.agregarColumnaBotonAccion(owner, this);
         lblTitulo = new JLabel("Centro de Computos");
@@ -50,6 +54,12 @@ public class CentrosComputoPanel extends JPanel {
         lblUnidadSeleccionada = new JLabel("Mostrando: ");
         lblUnidadSeleccionada.setFont(FuenteUtil.cargarFuenteInter(26, "Inter_SemiBold"));
         lblUnidadSeleccionada.setForeground(Color.white);
+         //Componentes de paginación
+        lblPagina = new JLabel("Página 1 de 1");
+        lblPagina.setFont(FuenteUtil.cargarFuenteInter(16, "Inter_Light"));
+        lblPagina.setForeground(Color.white);
+        btnAnterior = new Button("Anterior", 120, 40, 16, 35);
+        btnSiguiente = new Button("Siguiente", 120, 40, 16, 35);
          //Combobox
         UnidadDominio opcionTodas = new UnidadDominio();
         opcionTodas.setId(0L);
@@ -86,7 +96,13 @@ public class CentrosComputoPanel extends JPanel {
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         scrollPane.setPreferredSize(new Dimension(920, 400));
         scrollPane.getViewport().setBackground(tablaCentros.getBackground());
+
+        // Añadir componentes al panel
         panelContenido.add(scrollPane);
+        panelContenido.add(Box.createRigidArea(new Dimension(1800, 20)));
+        panelContenido.add(btnAnterior);
+        panelContenido.add(lblPagina);
+        panelContenido.add(btnSiguiente);
 
         menuLateralPanel.add(Box.createRigidArea(new Dimension(350, 20)));
         menuLateralPanel.add(lblTitulo);
@@ -105,32 +121,46 @@ public class CentrosComputoPanel extends JPanel {
     }
 
     public void crearTablaCentros() {
-        modelo.setRowCount(0);
         List<CentroComputoTablaDTO> centros = sistemaFacade.getCentroComputoFacade().consultarCentros();
-        for (CentroComputoTablaDTO centro : centros) {
-            modelo.addRow(new Object[]{
-                    centro.getId(),
-                    centro.getHoraApertura(),
-                    centro.getHoraCierre(),
-                    centro.getNombreUnidad(),
-                    centro.getNumComputadoras()
-            });
-        }
+        paginador = new TablaPaginada<>(
+                tablaCentros,
+                centros,
+                centro -> new Object[]{
+                        centro.getId(),
+                        centro.getHoraApertura(),
+                        centro.getHoraCierre(),
+                        centro.getNombreUnidad(),
+                        centro.getNumComputadoras(),
+                        "≡"
+                },
+                5,
+                lblPagina
+        );
+
+        btnAnterior.addActionListener(e -> paginador.anterior());
+        btnSiguiente.addActionListener(e -> paginador.siguiente());
+
     }
 
     public void crearTablaPorUnidad(UnidadDominio unidad) {
-        modelo.setRowCount(0);
         List<CentroComputoTablaDTO> centros = sistemaFacade.getCentroComputoFacade().consultarCentrosUnidad(unidad);
+        paginador = new TablaPaginada<>(
+                tablaCentros,
+                centros,
+                centro -> new Object[]{
+                        centro.getId(),
+                        centro.getHoraApertura(),
+                        centro.getHoraCierre(),
+                        centro.getNombreUnidad(),
+                        centro.getNumComputadoras(),
+                        "≡"
+                },
+                5,
+                lblPagina
+        );
 
-        for (CentroComputoTablaDTO centro : centros) {
-            modelo.addRow(new Object[]{
-                    centro.getId(),
-                    centro.getHoraApertura(),
-                    centro.getHoraCierre(),
-                    centro.getNombreUnidad(),
-                    centro.getNumComputadoras()
-            });
-        }
+        btnAnterior.addActionListener(e -> paginador.anterior());
+        btnSiguiente.addActionListener(e -> paginador.siguiente());
     }
 
     public ISistemaFacade getSistemaFacade() {

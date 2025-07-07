@@ -7,6 +7,7 @@ import com.mycompany.presentacionlabcomputo.paneles.MenuLateralPanel;
 import com.mycompany.presentacionlabcomputo.styles.Button;
 import com.mycompany.presentacionlabcomputo.styles.CustomTable;
 import com.mycompany.presentacionlabcomputo.styles.FuenteUtil;
+import com.mycompany.presentacionlabcomputo.styles.TablaPaginada;
 import dtos.centrocomputo.CentroComputoTablaDTO;
 import dtos.computadora.ComputadoraTablaDTO;
 import entidades.CentroComputoDominio;
@@ -27,6 +28,10 @@ public class CentroPanel extends JPanel {
     private Button btnVolver;
     private CustomTable tablaComputadoras;
     private DefaultTableModel modelo;
+    private TablaPaginada<ComputadoraTablaDTO> paginador;
+    private final JLabel lblPagina;
+    private final Button btnAnterior;
+    private final Button btnSiguiente;
 
     public CentroPanel(MainFrameBase owner, CentroComputoDominio centroComputo, CentrosComputoPanel centrosComputoPanel, ISistemaFacade sistemaFacade) {
         setOpaque(false);
@@ -37,12 +42,21 @@ public class CentroPanel extends JPanel {
         panelContenido = new JPanel();
         panelContenido.setOpaque(false);
         menuLateralPanel = new MenuLateralPanel();
-        //Componentes
-        modelo = new DefaultTableModel(new Object[]{"ID", "Numero", "Direccion IP",  "Estado", "Funcion", ""}, 0);
+        // Componentes
+         // Modelo de la tabla
+        modelo = new DefaultTableModel(new Object[]{"ID", "Direccion IP", "Numero",  "Estado", "Funcion", "Detalles"}, 0);
         this.tablaComputadoras = new CustomTable(modelo);
+        tablaComputadoras.agregarColumnaBotonAccion(owner, centrosComputoPanel);
+         // Labels
         lblNombreCentro = new JLabel("Centro de Computo: " + centroComputo.getId());
         lblNombreCentro.setFont(FuenteUtil.cargarFuenteInter(26, "Inter_Bold"));
         lblNombreCentro.setForeground(Color.white);
+        lblPagina = new JLabel("Página 1 de 1");
+        lblPagina.setFont(FuenteUtil.cargarFuenteInter(16, "Inter_Light"));
+        lblPagina.setForeground(Color.white);
+         // Botones
+        btnAnterior = new Button("Anterior", 120, 40, 16, 35);
+        btnSiguiente = new Button("Siguiente", 120, 40, 16, 35);
 
         btnAñadirComputadora = new Button("Añadir nueva computadora", 310, 45, 20, 50);
         btnVolver = new Button("Volver", 162, 45, 20, 50);
@@ -65,6 +79,10 @@ public class CentroPanel extends JPanel {
 
         // Añadir componentes al panel
         panelContenido.add(scrollPane);
+        panelContenido.add(Box.createRigidArea(new Dimension(1800, 20)));
+        panelContenido.add(btnAnterior);
+        panelContenido.add(lblPagina);
+        panelContenido.add(btnSiguiente);
 
         menuLateralPanel.add(Box.createRigidArea(new Dimension(350, 20)));
         menuLateralPanel.add(lblNombreCentro);
@@ -79,18 +97,25 @@ public class CentroPanel extends JPanel {
     }
 
     public void crearTablaComputadoras(CentroComputoDominio centro){
-        modelo.setRowCount(0);
-        List<ComputadoraTablaDTO> computadoras = sistemaFacade.getCentroComputoFacade().consultarComputadorasCentro(centro);
 
-        for (ComputadoraTablaDTO computadora : computadoras) {
-            modelo.addRow(new Object[]{
-                    computadora.getId(),
-                    computadora.getDireccionIP(),
-                    computadora.getNumeroEquipo(),
-                    computadora.getEstado(),
-                    computadora.getFuncion()
-            });
-        }
+        List<ComputadoraTablaDTO> computadoras = sistemaFacade.getCentroComputoFacade().consultarComputadorasCentro(centro);
+        paginador = new TablaPaginada<>(
+                tablaComputadoras,
+                computadoras,
+                computadora -> new Object[]{
+                        computadora.getId(),
+                        computadora.getDireccionIP(),
+                        computadora.getNumeroEquipo(),
+                        computadora.getEstado(),
+                        computadora.getFuncion(),
+                        "≡"
+                },
+                5,
+                lblPagina
+        );
+        btnAnterior.addActionListener(e -> paginador.anterior());
+        btnSiguiente.addActionListener(e -> paginador.siguiente());
+
     }
 
     @Override

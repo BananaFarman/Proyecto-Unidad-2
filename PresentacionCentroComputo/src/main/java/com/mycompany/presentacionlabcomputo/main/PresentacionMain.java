@@ -68,7 +68,7 @@ public class PresentacionMain {
 //        }
 
         //Prueba para cada frame
-//      ReservarEquipoFrame reservarEquipoFrame = new ReservarEquipoFrame();
+        ReservarEquipoFrame reservarEquipoFrame = new ReservarEquipoFrame();
 //      ICentroComputoDAO centroComputoDAO = new CentroComputoDAO(EntityManagerProvider.getEntityManager());
 //      ICentroComputoFacade centroComputoFacade = new CentroComputoFacade(centroComputoDAO);
 //      MainFrameBase mainFrame = new MainFrameBase(centroComputoFacade);
